@@ -1,0 +1,36 @@
+REST tranformation processing steps:
+
+1. Leadfield calculation
+
+For a new electrode system, you need to create a new leadfield matrix. This step is conducted by the LeadField.exe
+
+It calculates the leadfield matrix from the 3000 cortical dipoles and the newly given electrode array (e.g. ele_129) for the canonical concentric-three-spheres head model.The radii of the three concentri spheres are 0.87(inner radius of the skull), 0.92(outer radius of the skull) and 1.0(radius of the head), while the conductivities are 1.0(brain and scalp) and 0.0125(skull). The electorde array should be saved as *.txt ASCII files with their Caretesian x,y,z coordinates in three columns.The detailed operation is as follows:
+
+ 1. Double click the LeadField.exe
+ 2.  File--> Load Electrode File: .txt format; x,y,z position in three columns (e.g. ele_129.txt)
+ 3.  File--> Calculate Lead Field, it may take a few minutes that depends on the size of the matrix and the computer.
+
+-->Lead Field calculation completed
+     Now the lead field matrix is saved as Lead_Field.dat in current directory. Here the Lead_Field is *.dat format (e.g. Lead_Field.dat in the file).
+
+If you ever have calcuated the leadfield matrix, just go to the following second step: REST tranformation
+
+
+2. REST transformation
+
+This step is conducted in matlab by Reference_Batch.m
+
+First,  If you just created a new leadfield by the above "1. Leadfield calculation", copy and save "Lead_Field.dat" in the same directory as the main procedure Reference_Batch.m.
+
+
+       If you ever have the leadfield matrix with *.dat, just put it in this directory and re-name it as 'Lead_Field.dat'
+
+Second, run Reference_Batch.m
+
+ 1)   File--> Load Files (load the eeg data matrix, e.g. data.mat, with 129 electrods *1000 time points)
+
+ 2�� File-->Run & Export REST result-->'Calculation completed.'
+
+Now the Re-reference data is saved in the current directory with the *_REST_Ref postfix containing the re-referenced data with the same name as the original data (e.g. data_REST_Ref).
+
+Notice: The electrode information (number and order) must be matched with the data.

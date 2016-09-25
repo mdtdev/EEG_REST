@@ -1,3 +1,14 @@
+# MATLAB Gitignore Default
+#
+# MDT 2015.08.21
+#
+
+*.asv     # Autosaves from MATLAB
+*.mat     # Matlab Data Files
+*.m~      # *.m~ UNIX Style Autosaves
+*.mex*    # Binaries
+slprj/    # Simulink Directories
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
