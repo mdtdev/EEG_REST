@@ -161,10 +161,10 @@ switch cur_ref_mode
         for i=1:length(File_List)
 %            set(handles.listbox_files, 'String', File_List);
            set(handles.listbox_files, 'Value', i);
-            %try
+            try
                 cur_file=File_List{i};
-                [pathstr,name,ext] = fileparts(cur_file);
-                 save_dir=strcat(pathstr,'\\');     %MDT change
+                [pathstr,name,ext,versn] = fileparts(cur_file);
+                 save_dir=strcat(pathstr,'\');
                 save_dir=strcat(save_dir,name);
                            
                 save_dir=strcat(save_dir,'_REST_Ref.mat');
@@ -182,9 +182,9 @@ switch cur_ref_mode
                     Ref_data.(Fields_list{k})=cur_var;
                 end
                 save(save_dir, '-struct', 'Ref_data');
-            %catch
-               disp(['error 1 occuring for ' File_List{i}]);
-            %end
+            catch
+               disp(['error occuring for ' File_List{i}]);
+            end
 
             %---------------------
         end
@@ -211,7 +211,7 @@ switch cur_ref_mode
                 save(save_dir, '-struct', 'Ref_data');
                 
             catch
-              disp(['error 2 occuring for ' File_List{i}]);
+              disp(['error occuring for ' File_List{i}]);
             end
 
             %---------------------
@@ -236,7 +236,7 @@ switch cur_ref_mode
                 end
                 save(save_dir, '-struct', 'Ref_data');
             catch
-              disp(['error 3 occuring for ' File_List{i}]);
+              disp(['error occuring for ' File_List{i}]);
             end
 
             %---------------------
@@ -261,7 +261,7 @@ switch cur_ref_mode
                 end
                 save(save_dir, '-struct', 'Ref_data');
             catch
-              disp(['error 4 occuring for ' File_List{i}]);
+              disp(['error occuring for ' File_List{i}]);
             end
 
             %---------------------
@@ -269,7 +269,7 @@ switch cur_ref_mode
      
         ;
 end
- h = msgbox('5 Calculation completed.');
+ h = msgbox('Calculation completed.');
 
 
 
