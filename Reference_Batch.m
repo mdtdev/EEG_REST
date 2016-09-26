@@ -120,10 +120,10 @@ else
 end
 %--------------------
 %    Num_cluster=length(File_List);
-% 
+%
 %     for k=1:Num_cluster
 %         List_str{k}=strcat(File_List{k},'Not Processed');
-%         
+%
 %     end
 
     set(handles.listbox_files, 'String', File_List);
@@ -166,7 +166,7 @@ switch cur_ref_mode
                 [pathstr,name,ext] = fileparts(cur_file);
                  save_dir=strcat(pathstr,'\\');     %MDT change
                 save_dir=strcat(save_dir,name);
-                           
+
                 save_dir=strcat(save_dir,'_REST_Ref.mat');
 %                 save_dir=strcat
                 cur_data=load(cur_file);
@@ -209,7 +209,7 @@ switch cur_ref_mode
                     Ref_data.(Fields_list{k})=cur_var;
                 end
                 save(save_dir, '-struct', 'Ref_data');
-                
+
             catch
               disp(['error 2 occuring for ' File_List{i}]);
             end
@@ -257,7 +257,7 @@ switch cur_ref_mode
 
                     cur_ave=mean(cur_var([57,100],:));
                     cur_var=cur_var-repmat(cur_ave(end,:),size(cur_var,1),1);
-                    Ref_data.(Fields_list{k})=cur_var;                                          
+                    Ref_data.(Fields_list{k})=cur_var;
                 end
                 save(save_dir, '-struct', 'Ref_data');
             catch
@@ -266,7 +266,7 @@ switch cur_ref_mode
 
             %---------------------
       end
-     
+
         ;
 end
  h = msgbox('5 Calculation completed.');
@@ -305,5 +305,3 @@ function listbox_files_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
-
