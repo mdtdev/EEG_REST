@@ -39,7 +39,7 @@ cur_var = epocTestData - repmat(cur_ave,size(epocTestData,1),1);
 
 cur_var = Ra*cur_var;  % Multiply by Ra
 
-% Here is the wayu the paper says to do it!
+% Here is the way the paper says to do it!
 
 Va = epocTestData;
 Vprime = Ra*Va;
